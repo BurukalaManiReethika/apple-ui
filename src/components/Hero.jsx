@@ -1,16 +1,18 @@
 import { motion } from "framer-motion";
 
 export default function Hero() {
+  const scrollToFeatures = () => {
+    document.querySelector("#features")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <section className="min-h-screen flex items-center justify-center">
-
+    <section id="home" className="min-h-screen flex items-center justify-center pt-24">
       <div className="max-w-6xl mx-auto px-6 text-center">
-
         <motion.h1
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="text-6xl md:text-8xl font-bold leading-tight"
+          className="text-6xl md:text-8xl font-bold leading-tight bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent"
         >
           Think Different.
         </motion.h1>
@@ -18,50 +20,47 @@ export default function Hero() {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: .4 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
           className="text-gray-400 text-xl mt-8 max-w-3xl mx-auto"
         >
-          Beautiful software deserves beautiful design.
-          Experience a premium Apple-inspired interface built with React,
-          Tailwind CSS and Framer Motion.
+          Beautiful software deserves beautiful design. Experience a premium
+          Apple-inspired interface built with React, Tailwind CSS and Framer
+          Motion.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: .8 }}
+          transition={{ delay: 0.8, duration: 0.6 }}
           className="mt-14 flex justify-center gap-6 flex-wrap"
         >
-
-          <button className="bg-white text-black px-8 py-4 rounded-full font-semibold hover:scale-105 transition">
+          <button
+            onClick={scrollToFeatures}
+            className="bg-white text-black px-8 py-4 rounded-full font-semibold hover:scale-105 active:scale-95 transition"
+          >
             Get Started
           </button>
 
-          <button className="border border-white/20 px-8 py-4 rounded-full hover:bg-white/10 transition">
+          <a
+            href="#explore"
+            className="border border-white/20 px-8 py-4 rounded-full hover:bg-white/10 transition"
+          >
             Learn More
-          </button>
-
+          </a>
         </motion.div>
 
         <motion.div
-          initial={{ scale: .8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 1 }}
+          initial={{ scale: 0.8, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8 }}
           className="mt-24"
         >
-
-          <div className="rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 h-[450px] flex items-center justify-center">
-
-            <h2 className="text-3xl text-gray-400">
-              Product Preview
-            </h2>
-
+          <div className="rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 h-[300px] md:h-[450px] flex items-center justify-center">
+            <h2 className="text-3xl text-gray-400">Product Preview</h2>
           </div>
-
         </motion.div>
-
       </div>
-
     </section>
   );
 }
